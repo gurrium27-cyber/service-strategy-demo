@@ -56,15 +56,13 @@ function fePopHTML(p) {
 }
 
 function buildCell(p) {
-  const s = STRATEGY[p.strategy];
   const stateLabel = {red:'竞争力差', orange:'有差距', green:'领先'}[p.state];
   const head = `
     <div class="comp-head st-${p.state}">
-      <span class="strategy-tag ${s.cls}">${s.tag}</span>
       <span class="state-pill st-${p.state}">${stateLabel}</span>
+      <span class="comp-meta">同款 <b>${p.sameQty}</b> 件 · 击败您 <b>${p.beatBy}%</b></span>
     </div>
     <div class="comp-headline">${p.headline}</div>
-    <div class="comp-meta">同款 <b>${p.sameQty}</b> 件 · 击败您 <b>${p.beatBy}%</b></div>
   `;
 
   const hooksHTML = p.hooks.map((h, i) => {
