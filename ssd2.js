@@ -1,157 +1,111 @@
-// 续接 ssd.js - 领跑型 cell 剩余部分 + 抽屉
+// 同款竞品明细（hover popup 内容）
+const COMP_DETAIL = {
+  r1: [
+    {n:'M号 直筒牛仔裤 男 春夏新款', s:'3,248 销/30天', p:'¥98', t:'已开通破损包退'},
+    {n:'宽松直筒牛仔裤 男士 韩版', s:'2,856 销/30天', p:'¥109', t:'已开通48h发货'},
+    {n:'潮牌牛仔长裤 男 显瘦', s:'1,920 销/30天', p:'¥115', t:'已加入百亿补贴'}
+  ],
+  r2: [
+    {n:'法式茶歇连衣裙 收腰显瘦', s:'5,120 销/30天', p:'¥189', t:'类目:连衣裙'},
+    {n:'气质长裙 法式复古', s:'3,640 销/30天', p:'¥198', t:'类目:连衣裙'},
+    {n:'方领茶歇裙 夏新款', s:'2,890 销/30天', p:'¥179', t:'类目:连衣裙'}
+  ],
+  r3: [
+    {n:'港风字母夹克 男 秋冬', s:'1,820 销/30天', p:'¥259', t:'🏷 百亿补贴中'},
+    {n:'复古印花外套 男士潮牌', s:'1,540 销/30天', p:'¥269', t:'🏷 百亿补贴中'},
+    {n:'宽松工装夹克 男 韩版', s:'1,260 销/30天', p:'¥279', t:'🏷 百亿补贴中'}
+  ],
+  r4: [
+    {n:'雏菊插肩卫衣 短款 女', s:'920 销/30天', p:'¥55', t:'7 天降价 ¥4 ↓'},
+    {n:'明线卫衣 纯棉 韩版', s:'860 销/30天', p:'¥53', t:'7 天降价 ¥6 ↓'},
+    {n:'插肩袖卫衣 薄款 女', s:'780 销/30天', p:'¥56', t:'7 天降价 ¥3 ↓'}
+  ],
+  r5: [
+    {n:'设计感腋下包 通勤 女', s:'2,180 销/30天', p:'¥158', t:'✅ 5项服务全开通'},
+    {n:'单肩手提包 百搭 2026新', s:'1,920 销/30天', p:'¥168', t:'✅ 5项服务全开通'},
+    {n:'小众设计包包 法式优雅', s:'1,560 销/30天', p:'¥175', t:'✅ 5项服务全开通'}
+  ],
+  r6: [
+    {n:'女士休闲套装 卫衣两件套', s:'1,120 销/30天', p:'¥135', t:'落后 18 分'},
+    {n:'运动套装 宽松显瘦 女', s:'980 销/30天', p:'¥139', t:'落后 22 分'},
+    {n:'卫衣长裤两件套 春季新款', s:'870 销/30天', p:'¥129', t:'落后 25 分'}
+  ]
+};
 
-function buildLeadCell2(p) {
+// 前台展示样式（hover popup 内容）
+function fePopHTML(p) {
+  if (p.strategy === 'quality') {
+    return `
+      <div class="fe-row"><div class="fe-tag err">SRP 不展示</div><div class="fe-desc">商品状态异常，搜索/推荐全量屏蔽</div></div>
+      <div class="fe-row"><div class="fe-tag err">底纹屏蔽</div><div class="fe-desc">底纹词「${p.pic === '👖' ? '牛仔裤男' : '连衣裙'}」不收录</div></div>
+      <div class="fe-row"><div class="fe-tag ok">修复后 →</div><div class="fe-desc">进入「猜你想搜」+ 类目筛选 + SRP 主流量</div></div>
+    `;
+  }
+  if (p.strategy === 'subsidy') {
+    return `
+      <div class="fe-row"><div class="fe-tag sub">SRP 补贴标</div><div class="fe-desc">列表卡片左上角「百亿补贴」金标</div></div>
+      <div class="fe-row"><div class="fe-tag sub">补贴会场</div><div class="fe-desc">百亿补贴频道首页类目位曝光</div></div>
+      <div class="fe-row"><div class="fe-tag sub">底纹/猜搜</div><div class="fe-desc">底纹词带「补贴价 ¥${p.id==='r3'?269:54}」前置展示</div></div>
+    `;
+  }
   return `
-  <div class="cc lead">
-    <div class="cc-hd g">⚡ ${p.stateTxt} · 击败 <b>${p.beatBy}%</b> 同款（共 ${p.sameQty} 件）</div>
-    <div class="cc-loss">
-      <div class="cc-l-it"><div class="cc-l-v g">+${fmt(p.leadExp)}</div><div class="cc-l-k">日均加权曝光</div></div>
-      <div class="cc-l-it"><div class="cc-l-v g">+¥${fmt(p.leadGmv)}</div><div class="cc-l-k">日均产出 GMV</div></div>
-      <div class="cc-l-it"><div class="cc-l-v g">+${p.leadOrder}</div><div class="cc-l-k">日均订单</div></div>
-    </div>
-    <div class="cc-fe-title">您在 3 个前台流量位的 <b class="g">领跑</b> 表现：</div>
-    <div class="cc-fe">
-      <div class="cc-fe-it"><span class="cc-fe-ic">🔎</span>
-        <div class="cc-fe-bd"><div class="cc-fe-k">搜索SRP · 服务icon</div>
-        <div class="cc-fe-d"><b class="g">${p.fe.icon.cur}</b> · 同款最优</div></div>
-        <span class="cc-fe-up g">✓ 领跑</span></div>
-      <div class="cc-fe-it"><span class="cc-fe-ic">💡</span>
-        <div class="cc-fe-bd"><div class="cc-fe-k">搜索底纹 · 服务词前置</div>
-        <div class="cc-fe-d"><b class="g">${p.fe.hint.cur}</b></div></div>
-        <span class="cc-fe-up g">✓ 领跑</span></div>
-      <div class="cc-fe-it"><span class="cc-fe-ic">🔧</span>
-        <div class="cc-fe-bd"><div class="cc-fe-k">搜索筛选 · 服务筛选项</div>
-        <div class="cc-fe-d"><b class="g">${p.fe.filter.cur}</b></div></div>
-        <span class="cc-fe-up g">✓ 领跑</span></div>
-    </div>
-    <div class="cc-act">
-      <button class="cc-btn pri" onclick="openDr('${p.id}')">查看流量明细</button>
-      <button class="cc-btn" onclick="openDr('${p.id}')">复制到其他商品</button>
-    </div>
-  </div>`;
-}
-// 替换 buildLeadCell 为完整版
-window.buildLeadCell = buildLeadCell2;
-
-// ========== 抽屉 ==========
-function openDr(id) {
-  const p = products.find(x => x.id === id);
-  if (!p) return;
-  const tag = document.getElementById('drTag');
-  tag.textContent = p.stateTxt;
-  tag.className = 'tag ' + p.state[0];
-  document.getElementById('drBody').innerHTML = buildDrBody(p);
-  document.getElementById('mask').classList.add('on');
-  document.getElementById('dr').classList.add('on');
-}
-function closeDr() {
-  document.getElementById('mask').classList.remove('on');
-  document.getElementById('dr').classList.remove('on');
-}
-
-function buildDrBody(p) {
-  const isLead = p.state === 'green';
-  const c = p.state[0];
-  // 顶部 KPI
-  const kpi = isLead
-    ? `<div class="fb-stat">
-        <div class="it g"><b>TOP ${100-p.beatBy}%</b>同款竞争力</div>
-        <div class="it g"><b>+¥${fmt(p.leadGmv)}/日</b>服务加权产出</div>
-        <div class="it g"><b>${p.leadOrder}/日</b>稳定订单</div>
-      </div>`
-    : `<div class="fb-stat">
-        <div class="it ${c}"><b>落后 ${p.beatBy}%</b>同款 ${p.sameQty} 件击败您</div>
-        <div class="it ${c}"><b>-${fmt(p.lostExp)}/日</b>流失曝光</div>
-        <div class="it ${c}"><b>-¥${fmt(p.lostGmv)}/日</b>流失 GMV</div>
-      </div>`;
-
-  // 同款竞品
-  const competiteRows = !isLead ? `
-    <tr><td>破损包退</td><td><span class="svc-i no">未开通</span></td><td><span class="svc-i">已开通</span></td><td>92%</td><td><span class="imp">流量 -18%</span></td></tr>
-    <tr><td>48小时发货</td><td><span class="svc-i no">未开通</span></td><td><span class="svc-i">已开通</span></td><td>87%</td><td><span class="imp">点击 -12%</span></td></tr>
-    <tr><td>7天无理由</td><td><span class="svc-i">已开通</span></td><td><span class="svc-i">已开通</span></td><td>100%</td><td><span class="imp g">持平</span></td></tr>
-    <tr><td>运费险</td><td><span class="svc-i no">未开通</span></td><td><span class="svc-i">已开通</span></td><td>78%</td><td><span class="imp">转化 -9%</span></td></tr>
-    <tr><td>极速退款</td><td><span class="svc-i">已开通</span></td><td><span class="svc-i">已开通</span></td><td>65%</td><td><span class="imp g">领先</span></td></tr>` : `
-    <tr><td>破损包退</td><td><span class="svc-i">已开通</span></td><td><span class="svc-i">已开通</span></td><td>92%</td><td><span class="imp g">领先</span></td></tr>
-    <tr><td>48小时发货</td><td><span class="svc-i">已开通</span></td><td><span class="svc-i">已开通</span></td><td>87%</td><td><span class="imp g">领先</span></td></tr>
-    <tr><td>7天无理由</td><td><span class="svc-i">已开通</span></td><td><span class="svc-i">已开通</span></td><td>100%</td><td><span class="imp g">持平</span></td></tr>
-    <tr><td>运费险</td><td><span class="svc-i">已开通</span></td><td><span class="svc-i">已开通</span></td><td>78%</td><td><span class="imp g">领先</span></td></tr>
-    <tr><td>极速退款</td><td><span class="svc-i">已开通</span></td><td><span class="svc-i">已开通</span></td><td>65%</td><td><span class="imp g">独家</span></td></tr>`;
-
-  return `
-  ${kpi}
-
-  <!-- ① 同款竞品 -->
-  <div class="dr-card">
-    <h4>① 同款竞品 <span class="badge">近30天同款成交TOP10</span></h4>
-    <div class="sub">系统识别您与同款 TOP3 的服务项差异，影响列即流量/转化抓手。</div>
-    <table class="gap-tbl">
-      <thead><tr><th>服务项</th><th>您的商品</th><th>同款TOP3</th><th>覆盖率</th><th>影响</th></tr></thead>
-      <tbody>${competiteRows}</tbody>
-    </table>
-  </div>
-
-  <!-- ② 前台样式预览 -->
-  <div class="dr-card">
-    <h4>② 服务项在前台应用 <span class="badge">补齐后的真实展示效果</span></h4>
-    <div class="sub">${isLead?'您的商品在 3 个前台流量位均处于优势位置：':'补齐核心服务后，您的商品将在 3 个前台流量位获得加权展示：'}</div>
-    <div class="pv-row">
-      ${buildPhone1(p, isLead)}
-      ${buildPhone2(p, isLead)}
-      ${buildPhone3(p, isLead)}
-    </div>
-  </div>
-
-  <!-- ③ 流量加权 -->
-  <div class="dr-card">
-    <h4>③ 流量加权 <span class="badge">服务→搜推算法加权明细</span></h4>
-    <div class="sub">${isLead?'当前生效的服务加权项：':'补齐每项服务对应的搜推流量加权数值（基于平台公开规则）：'}</div>
-    ${buildWeights(p, isLead)}
-    ${!isLead ? `
-    <div class="dr-sum">
-      <div class="dr-sum-l">
-        <div class="dr-sum-k">合计预估 7 天增量</div>
-        <div class="dr-sum-v">曝光 +${fmt(p.recExp*7)} · <span class="g">GMV +¥${fmt(p.recGmv*7)}</span> · 订单 +${p.recOrder*7}</div>
-      </div>
-      <button class="cc-btn pri big">一键应用全部服务方案</button>
-    </div>` : ''}
-  </div>
+    <div class="fe-row"><div class="fe-tag svc">SRP 服务icon</div><div class="fe-desc">卡片底部 🛡 破损包退 + ⚡ 48h发货</div></div>
+    <div class="fe-row"><div class="fe-tag svc">搜索筛选</div><div class="fe-desc">用户筛「破损包退」时进入流量池</div></div>
+    <div class="fe-row"><div class="fe-tag svc">底纹/猜搜</div><div class="fe-desc">服务词「48h发货」前置展示</div></div>
   `;
 }
 
-// 注意：buildPhone2、buildPhone3、buildWeights 在 ssd3.js 中定义
-
-function buildPhone1(p, isLead) {
-  return `
-  <div class="pv">
-    <div class="pv-h a">① 搜索结果页 · 服务icon</div>
-    <div class="ph">
-      <div class="ph-sb">🔍 <input value="${p.name.slice(0,4)}"></div>
-      <div class="ph-fil"><span>综合</span><span>销量</span><span>价格</span><span>筛选</span></div>
-      <div class="ph-it hi">
-        <div class="ph-p">${p.pic}</div>
-        <div class="ph-m">
-          <div class="ph-n"><span class="ph-rank up">${isLead?'第1位':'第2位 ↑'}</span>${p.name.slice(0,12)}</div>
-          <div class="ph-pr">${p.price}</div>
-          <div class="ph-svc"><span>破损包退</span><span>48h发</span><span>运费险</span></div>
-        </div>
-      </div>
-      <div class="ph-it">
-        <div class="ph-p">📦</div>
-        <div class="ph-m">
-          <div class="ph-n">同款竞品 B</div>
-          <div class="ph-pr">¥69</div>
-          <div class="ph-svc"><span>破损包退</span><span>48h发</span></div>
-        </div>
-      </div>
-      <div class="ph-it">
-        <div class="ph-p">📦</div>
-        <div class="ph-m">
-          <div class="ph-n">同款竞品 C</div>
-          <div class="ph-pr">¥79</div>
-          <div class="ph-svc"><span>破损包退</span></div>
-        </div>
-      </div>
+function buildCell(p) {
+  const s = STRATEGY[p.strategy];
+  const stateLabel = {red:'竞争力差', orange:'有差距', green:'领先'}[p.state];
+  const head = `
+    <div class="comp-head st-${p.state}">
+      <span class="strategy-tag ${s.cls}">${s.tag}</span>
+      <span class="state-pill st-${p.state}">${stateLabel}</span>
     </div>
-  </div>`;
+    <div class="comp-headline">${p.headline}</div>
+    <div class="comp-meta">同款 <b>${p.sameQty}</b> 件 · 击败您 <b>${p.beatBy}%</b></div>
+  `;
+
+  const hooksHTML = p.hooks.map((h, i) => {
+    const hasPop = h.pop;
+    return `
+      <div class="hook ${h.primary?'pri':''} ${hasPop?'hov':''}" data-pop="${h.pop||''}" data-pid="${p.id}">
+        <div class="hk-ic">${h.ic}</div>
+        <div class="hk-body">
+          <div class="hk-row1">
+            <span class="hk-act">${h.act}</span>
+            <span class="hk-gain ${p.state==='red'?'g-red':p.state==='green'?'g-grn':'g-org'}">${h.gain}</span>
+          </div>
+          <div class="hk-sub">${h.sub}</div>
+        </div>
+        <a class="hk-cta">${h.cta} ›</a>
+        ${hasPop ? `<div class="popover pop-${h.pop}">${buildPop(p, h.pop)}</div>` : ''}
+      </div>
+    `;
+  }).join('');
+
+  return head + `<div class="hooks">${hooksHTML}</div>`;
+}
+
+function buildPop(p, type) {
+  if (type === 'comp') {
+    const items = COMP_DETAIL[p.id] || [];
+    return `
+      <div class="pop-title">📦 近30天同款成交 TOP3</div>
+      ${items.map(it => `
+        <div class="pop-comp-row">
+          <div class="pop-comp-name">${it.n}</div>
+          <div class="pop-comp-meta"><span>${it.s}</span><span class="pop-comp-price">${it.p}</span></div>
+          <div class="pop-comp-tag">${it.t}</div>
+        </div>
+      `).join('')}
+      <div class="pop-foot">点击「一键应用服务方案」查看完整对比 →</div>
+    `;
+  }
+  return `
+    <div class="pop-title">🔍 前台展示样式预览</div>
+    ${fePopHTML(p)}
+    <div class="pop-foot">三处前台位均与搜推权重直接挂钩</div>
+  `;
 }
