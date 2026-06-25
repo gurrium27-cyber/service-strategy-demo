@@ -301,3 +301,41 @@ tr td .comp-head.st-green + .comp-headline{color:#00b42a}
 
 .tier-more{font-size:11px;color:#2c5cc5;cursor:pointer;align-self:flex-end;font-weight:500}
 .tier-more:hover{text-decoration:underline}
+
+/* ========== v4 单卡片版（每行只一个策略，真实图） ========== */
+.pic img{width:100%;height:100%;object-fit:cover;border-radius:4px;display:block}
+.col-comp{min-width:360px;max-width:400px;padding:14px 14px !important}
+
+.sc{background:#fff;border:1px solid #e5e6eb;border-radius:8px;padding:12px 14px;display:flex;flex-direction:column;gap:10px;position:relative;transition:all .15s}
+.sc:hover{border-color:#bedaff;box-shadow:0 3px 12px rgba(44,92,197,.08)}
+
+.sc-top{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.sc-tag{font-size:11px;padding:2px 8px;border-radius:3px;font-weight:600;flex-shrink:0;white-space:nowrap;border:1px solid}
+.sc-tag.tag-q{background:#fff1f0;color:#f53f3f;border-color:#ffd6d4}
+.sc-tag.tag-s{background:#f0f9eb;color:#00b42a;border-color:#d9f1c4}
+.sc-tag.tag-v{background:#e8f3ff;color:#2c5cc5;border-color:#bedaff}
+.sc-tag.tag-g{background:#f0f9eb;color:#00b42a;border-color:#d9f1c4}
+.sc-compete{font-size:11px;color:#86909c;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+.sc-act{font-size:14px;color:#1d2129;font-weight:600;line-height:1.5}
+
+.sc-row{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.sc-gain{font-size:12px;color:#00b42a;font-weight:500}
+.sc-gain b{color:#00b42a;font-weight:700;font-size:14px;margin-left:2px}
+.sc-cta{font-size:13px;padding:6px 16px;color:#fff;border:none;border-radius:4px;cursor:pointer;font-weight:600;flex-shrink:0;background:#1d2129}
+.sc-cta:hover{opacity:.85}
+.sc-cta.cta-q{background:linear-gradient(90deg,#f53f3f,#ff7875)}
+.sc-cta.cta-s{background:linear-gradient(90deg,#fa8c16,#ffa940)}
+.sc-cta.cta-v{background:linear-gradient(90deg,#2c5cc5,#4080e0)}
+.sc-cta.cta-g{background:linear-gradient(90deg,#00b42a,#52c41a)}
+
+.sc-vs{display:flex;align-items:center;gap:8px;padding:8px;border-top:1px dashed #f2f3f5;background:#fafbfc;margin:0 -14px -2px;padding-left:14px;padding-right:14px}
+.vs-badge{font-size:10px;font-weight:700;color:#fa8c16;background:#fff7e6;border:1px solid #ffd591;padding:2px 5px;border-radius:3px;flex-shrink:0}
+.vs-pic{width:44px;height:44px;object-fit:cover;border-radius:4px;flex-shrink:0;background:#f2f3f5}
+.vs-body{flex:1;min-width:0}
+.vs-name{font-size:12px;color:#1d2129;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.vs-sub{font-size:11px;color:#86909c;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.vs-price{font-size:14px;color:#f53f3f;font-weight:700;flex-shrink:0}
+
+.sc-more{font-size:11px;color:#2c5cc5;cursor:pointer;align-self:flex-end;font-weight:500;margin-top:-2px}
+.sc-more:hover{text-decoration:underline}
