@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>我的商品 · 同款竞争</title>
+<meta name="viewport" content="width=1440">
+<link rel="stylesheet" href="v2.css">
+</head>
+<body>
+<div class="app">
+
+  <!-- 左侧极简 sidebar -->
+  <aside class="side">
+    <div class="side-add">+</div>
+    <div class="side-mini"><span>🕐</span><span>🔍</span></div>
+    <nav class="side-nav">
+      <div class="side-it"><span class="ic">🏠</span>首页</div>
+      <div class="side-it act"><span class="ic">📦</span>商品</div>
+      <div class="side-it"><span class="ic">💳</span>交易</div>
+      <div class="side-it"><span class="ic">📝</span>内容</div>
+      <div class="side-it"><span class="ic">👥</span>私域</div>
+      <div class="side-it"><span class="ic">🏪</span>店铺</div>
+      <div class="side-it"><span class="ic">📣</span>营销</div>
+      <div class="side-it"><span class="ic">📢</span>推广</div>
+      <div class="side-it"><span class="ic">📊</span>数据</div>
+      <div class="side-it"><span class="ic">⚙️</span>应用</div>
+      <div class="side-it"><span class="ic">💬</span>客服</div>
+      <div class="side-it"><span class="ic">🔧</span>服务</div>
+    </nav>
+  </aside>
+
+  <div class="main-wrap">
+
+    <!-- 顶部 公告条 -->
+    <header class="topbar">
+      <div class="tb-left">
+        <span class="tb-ic">🕐</span>
+        <span class="tb-ic">🔍</span>
+      </div>
+      <div class="tb-notice">
+        <span class="lbl">公告</span>
+        <span class="sep">|</span>
+        <span class="txt">618年中大促全民狂欢！淘宝商家报名开始！</span>
+      </div>
+      <div class="tb-right">
+        <div class="tb-it"><span class="ic">💬</span><span class="dot">6</span>消息</div>
+        <div class="tb-it"><span class="ic">📋</span>规则</div>
+        <div class="tb-it"><span class="ic">💡</span>反馈</div>
+        <div class="tb-it"><span class="ic">📚</span>学习</div>
+        <div class="tb-it"><span class="ic">⬇️</span>下载</div>
+        <div class="tb-user">
+          <div class="tb-user-av">在</div>
+          <div class="tb-user-info">
+            <div class="tb-user-name">在照 运营主管</div>
+            <div class="tb-user-shop">千牛的官方小店</div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- 工作区 -->
+    <div class="workarea">
+      <!-- 左二级菜单 -->
+      <aside class="subnav">
+        <div class="subnav-grp">
+          <div class="subnav-hd">宝贝管理 <span class="arr">∧</span></div>
+          <div class="subnav-it act">我的商品</div>
+          <div class="subnav-it">发布商品</div>
+          <div class="subnav-it">商品装修</div>
+          <div class="subnav-it">商品素材</div>
+          <div class="subnav-it">图片空间</div>
+          <div class="subnav-it">视频空间</div>
+          <div class="subnav-it">仓储库存</div>
+        </div>
+        <div class="subnav-grp">
+          <div class="subnav-hd">商品运营 <span class="arr">∧</span></div>
+          <div class="subnav-it">商品运营</div>
+          <div class="subnav-it">新品运营</div>
+        </div>
+        <div class="subnav-grp">
+          <div class="subnav-hd">货源管理 <span class="arr">∧</span></div>
+          <div class="subnav-it">分销管理</div>
+          <div class="subnav-it">找工厂</div>
+        </div>
+      </aside>
+
+      <!-- 右内容 -->
+      <main class="content">
+
+        <div class="info-banner">
+          <span class="ic">ℹ️</span>
+          <span>功能说明/提示消息/规则解释区域（若无内容则隐藏）</span>
+        </div>
+
+        <div class="panel">
+          <!-- tabs -->
+          <div class="tabs">
+            <div class="tab act">全部(100)</div>
+            <div class="tab">出售中(80)</div>
+            <div class="tab">仓库中(20)</div>
+            <div class="tab">草稿(200)</div>
+            <div class="tab">回收站(1000)</div>
+            <div class="tab-more">···</div>
+          </div>
+
+          <!-- 快捷筛选 chips -->
+          <div class="chips">
+            <span class="chip act">SKU缺货商品 (8) <span class="qm">ⓘ</span></span>
+            <span class="chip">不合规商品(10) <span class="qm">ⓘ</span></span>
+            <span class="chip">质量分60分以下(34)</span>
+            <span class="chip">类目错放违规(78)</span>
+          </div>
+
+          <!-- filter form -->
+          <div class="filter">
+            <input placeholder="商品标题  请输入" />
+            <input placeholder="商品ID  请输入" />
+            <input placeholder="商家编码  请输入" />
+            <select><option>店铺分类  请选择</option></select>
+            <button class="btn btn-pri">搜索</button>
+            <button class="btn btn-w">重置</button>
+            <span style="color:#86909c;margin-left:8px">排序</span>
+            <span class="expand-link">展开 ▾</span>
+          </div>
+
+          <!-- ops -->
+          <div class="ops">
+            <button class="btn btn-pri">发布商品</button>
+            <button class="btn btn-w">主图管理</button>
+            <button class="btn btn-w">批量删除</button>
+            <button class="btn btn-w">更多批量操作 ▾</button>
+            <span class="sel">已选 3</span>
+            <div class="right">
+              <span>共 <b style="color:#1d2129">216</b> 件商品</span>
+              <div class="pager">
+                <span class="p-btn">‹</span>
+                <span>2/10</span>
+                <span class="p-btn">›</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- table -->
+          <table>
+            <thead>
+              <tr>
+                <th class="ck"><input type="checkbox" style="width:14px;height:14px;accent-color:#2c5cc5"></th>
+                <th>商品信息</th>
+                <th>价格 <span class="srt">⇅</span></th>
+                <th>库存</th>
+                <th>累计销量 <span class="srt">⇅</span></th>
+                <th>30日销量 <span class="srt">⇅</span></th>
+                <th>同款竞争 <span class="qm">ⓘ</span></th>
+                <th>创建时间</th>
+                <th>操作 <span class="qm">ⓘ</span></th>
+              </tr>
+            </thead>
+            <tbody id="tbody"></tbody>
+          </table>
+        </div>
+
+      </main>
+    </div>
+  </div>
+</div>
+<script src="v2.js"></script>
+</body>
+</html>
