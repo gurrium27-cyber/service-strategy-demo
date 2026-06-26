@@ -27,7 +27,7 @@ const products = [
     act:'修复 SKU 类型 + 补全标题',
     gain:'+90%',
     cta:'一键修复',
-    competitor:{picUrl:IMG.jeans2,name:'M号 直筒牛仔裤 男 修复版',sub:'✅ 质量分 95 · 已售 3,248',price:'¥118'}
+    competitor:{picUrl:IMG.jeans2,name:'M号 直筒牛仔裤 男 修复版',sub:'✅ 质量分 95 · SKU 完整 · 已售 3,248',price:'¥118',advantage:'同款已修复 SKU + 标题完整'}
   },
   {
     id:'r2', picUrl:IMG.dress,
@@ -41,7 +41,7 @@ const products = [
     act:'重选类目 + 改标题违禁词',
     gain:'+95%',
     cta:'去修改',
-    competitor:{picUrl:IMG.dress2,name:'法式茶歇连衣裙 收腰显瘦',sub:'✅ 类目正确 · 已售 5,120',price:'¥189'}
+    competitor:{picUrl:IMG.dress2,name:'法式茶歇连衣裙 收腰显瘦',sub:'✅ 类目正确 · 无违禁词 · 已售 5,120',price:'¥189',advantage:'同款已正确挂类目'}
   },
   {
     id:'r3', picUrl:IMG.jacket,
@@ -55,7 +55,7 @@ const products = [
     act:'降价 ¥30 → ¥269，进入百亿补贴池',
     gain:'+180%',
     cta:'去降价',
-    competitor:{picUrl:IMG.jacket2,name:'港风字母夹克 男 秋冬',sub:'🏷 拼多多百亿补贴 · ¥269',price:'¥269'}
+    competitor:{picUrl:IMG.jacket2,name:'港风字母夹克 男 秋冬',sub:'🏷 已入百亿补贴池 · 享免佣流量加权',price:'¥269',advantage:'同款已加入「百亿补贴」'}
   },
   {
     id:'r4', picUrl:IMG.hoodie,
@@ -69,7 +69,7 @@ const products = [
     act:'跟降 ¥5 → ¥54，守住补贴位',
     gain:'+30%',
     cta:'去降价',
-    competitor:{picUrl:IMG.hoodie2,name:'明线卫衣 纯棉 韩版 短款',sub:'🏷 抖音百亿补贴 · ¥54',price:'¥54'}
+    competitor:{picUrl:IMG.hoodie2,name:'明线卫衣 纯棉 韩版 短款',sub:'🏷 跟降进补贴 · 抢走您 12% 流量',price:'¥54',advantage:'同款已跟降进入补贴位'}
   },
   {
     id:'r5', picUrl:IMG.bag,
@@ -83,7 +83,7 @@ const products = [
     act:'补「破损包退 + 48h发货」',
     gain:'+30%',
     cta:'一键开通',
-    competitor:{picUrl:IMG.bag2,name:'设计感腋下包 通勤 女',sub:'🛡 ⚡ 双服务加权 · 已售 2,180',price:'¥158'}
+    competitor:{picUrl:IMG.bag2,name:'设计感腋下包 通勤 女',sub:'🛡破损包退 ⚡48h ✅运费险 三服务全开',price:'¥158',advantage:'同款已开通 3 项服务（您 0 项）'}
   },
   {
     id:'r6', picUrl:IMG.sport,
@@ -97,7 +97,7 @@ const products = [
     act:'维持当前策略 · 加投流量包扩量',
     gain:'+20%',
     cta:'去推广',
-    competitor:{picUrl:IMG.sport2,name:'女士休闲套装 卫衣两件套',sub:'落后您 18 分 · 已售 1,120',price:'¥135'}
+    competitor:{picUrl:IMG.sport2,name:'女士休闲套装 卫衣两件套',sub:'仅 1 项服务 · 综合分落后您 18 分',price:'¥135',advantage:'同款各维度均落后您'}
   }
 ];
 
